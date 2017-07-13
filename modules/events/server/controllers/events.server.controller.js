@@ -81,7 +81,7 @@ function getAccessToken() {
     var accessToken;
 
 
-    User.findOne({ username: 'hellodoc16' }, function (findError, settings) {
+    User.findOne({ username: 'manaswaoral' }, function (findError, settings) {
         //check if access token is still valid
         var today = new Date();
         var currentTime = today.getTime();

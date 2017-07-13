@@ -663,6 +663,7 @@ eventCreateApp.controller('EventsCreateController',
     ['$scope', '$googleCalendar', '$location', '$log', '$filter', '$compile', 'prsnlService', '$mdDialog', '$mdMedia', '$rootScope',
         function ($scope, $googleCalendar, $location, $log, $filter, $compile, prsnlService, $mdDialog, $mdMedia, $rootScope) {
 
+            DialogController.$inject = ["$scope", "$mdDialog", "prsnlService"];
             $scope.events = [];
 
             this.selectedDentist = prsnlService.getDentist();
@@ -867,7 +868,6 @@ eventCreateApp.controller('EventsCreateController',
                 $scope.displayDateTime = $rootScope.dateTime;
                 $scope.displayTime = $rootScope.endTime;
             }
-            DialogController.$inject = ["$scope", "$mdDialog", "prsnlService"];
 
             $scope.showFailed = function () {
                 var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
@@ -1893,7 +1893,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                 animation: $scope.animationsEnabled,
                 templateUrl: 'modules/personals/views/create-personal.client.view.html',
 
-                controller: function ($scope, $uibModalInstance) {
+                controller: ["$scope", "$uibModalInstance", function ($scope, $uibModalInstance) {
 
                     $scope.ok = function () {
                         $uibModalInstance.close($scope.personal);
@@ -1903,7 +1903,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                         $uibModalInstance.dismiss('cancel');
                     };
 
-                },
+                }],
                 size: size
             });
 
@@ -1937,7 +1937,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'modules/personals/views/edit-personal.client.view.html',
-                controller: function ($scope, $uibModalInstance, selectedPersonal) {
+                controller: ["$scope", "$uibModalInstance", "selectedPersonal", function ($scope, $uibModalInstance, selectedPersonal) {
 
                     $scope.personal = selectedPersonal;
 
@@ -1949,7 +1949,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                         $uibModalInstance.dismiss('cancel');
                     };
 
-                },
+                }],
                 size: size,
                 resolve: {
                     selectedPersonal: function () {
@@ -1976,7 +1976,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
 
                 templateUrl: 'modules/personals/views/list-apptslots.client.view.html',
 
-                controller: function ($scope, $uibModalInstance, selectedPersonal, slotService) {
+                controller: ["$scope", "$uibModalInstance", "selectedPersonal", "slotService", function ($scope, $uibModalInstance, selectedPersonal, slotService) {
 
                     $scope.personal = selectedPersonal;
                     slotService.slotList = selectedPersonal.slots;
@@ -1991,7 +1991,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                         $uibModalInstance.dismiss('cancel');
                     };
 
-                },
+                }],
 
                 size: size,
 
@@ -2033,6 +2033,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
 
         this.modelBlock = function (selectedPersonal) {
 
+            DialogController.$inject = ["$scope", "$mdDialog", "personal", "$googleCalendar", "$mdToast"];
             function DialogController($scope, $mdDialog, personal, $googleCalendar, $mdToast) {
 
                 $scope.personal = personal;
@@ -2093,7 +2094,6 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                 };
 
             }
-            DialogController.$inject = ["$scope", "$mdDialog", "personal", "$googleCalendar", "$mdToast"];
 
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
 

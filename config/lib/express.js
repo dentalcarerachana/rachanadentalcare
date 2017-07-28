@@ -16,7 +16,8 @@ var config = require('../config'),
   helmet = require('helmet'),
   flash = require('connect-flash'),
   consolidate = require('consolidate'),
-  path = require('path');
+  path = require('path'),
+  cors = require('cors');
 
 var sassMiddleware = require('node-sass-middleware');
 /**
@@ -92,6 +93,9 @@ module.exports.initMiddleware = function (app) {
   // Add the cookie parser and flash middleware
   app.use(cookieParser());
   app.use(flash());
+
+  //Add cors support
+  app.use(cors());
 
   // Add multipart handling middleware
   /*app.use(multer({

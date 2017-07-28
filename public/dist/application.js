@@ -1670,7 +1670,6 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
                 $scope.selectedTreatments = null;
                 $scope.slots = null;
                 $scope.profileImageURL = null;
-                $scope.file = null;
                 Notify.sendMsg('NewPersonal', { 'id': response._id });
 
             }, function (errorResponse) {

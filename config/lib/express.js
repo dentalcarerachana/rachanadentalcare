@@ -16,7 +16,7 @@ var config = require('../config'),
   helmet = require('helmet'),
   flash = require('connect-flash'),
   consolidate = require('consolidate'),
-  path = require('path'),
+  path = require('path');
  // cors = require('cors');
 
 var sassMiddleware = require('node-sass-middleware');

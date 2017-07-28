@@ -77,7 +77,8 @@
     "validator": "*",
     "xmlhttprequest": "*",
     "q": "*",
-    "oauth": "*"
+    "oauth": "*",
+    "cors": "*"
   },
   "devDependencies": {
     "grunt": "*",

@@ -18,6 +18,7 @@ var config = require('../config'),
   consolidate = require('consolidate'),
   path = require('path');
  // cors = require('cors');
+ var cors = require('cors');
 
 var sassMiddleware = require('node-sass-middleware');
 /**
@@ -95,7 +96,7 @@ module.exports.initMiddleware = function (app) {
   app.use(flash());
 
   //Add cors support
-//  app.use(cors());
+  app.use(cors());
 
   // Add multipart handling middleware
   /*app.use(multer({

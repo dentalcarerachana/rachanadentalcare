@@ -88,7 +88,7 @@
                 <md-input-container class="place" style="margin-left:25px;margin-top:0">
                     <label class="all-colors">Place</label>
                     <md-icon><i class="text-muted glyphicon glyphicon-home"></i></md-icon>
-                    <input id="placeid" required name="patientPlace" type="text" ng-model="$parent.event.patientPlace" ng-pattern="/^[a-zA-Z ]{1,25}$/">
+                    <input id="placeid" name="patientPlace" type="text" ng-model="$parent.event.patientPlace" ng-pattern="/^[a-zA-Z ]{1,25}$/">
                     <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientPlace.$touched">
                         <div ng-show="patientForm.patientPlace.$error.required"><b>Please fill  patient place</b></div>
                         <div ng-show="patientForm.patientPlace.$error.pattern"><b>Please fill the letters only</b></div>

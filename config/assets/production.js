@@ -36,7 +36,9 @@ module.exports = {
         'public/lib/angularMultipleSelect/build/multiple-select.min.js',
         'public/lib/angular-strap/dist/angular-strap.min.js', 
         'public/lib/angular-strap/dist/angular-strap.tpl.min.js',
-        'public/lib/fullcalendar-scheduler/dist/scheduler.min.js'
+        'public/lib/fullcalendar-scheduler/dist/scheduler.min.js',
+        'public/lib/filepicker-js/filepicker.min.js',
+        'public/lib/angular-filepicker/dist/angular_filepicker.min.js',
       ]
     },
     css: 'public/dist/application.min.css',

@@ -22,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6 text-center form-group">
-                        <div class="text-center">
+                        <!--<div class="text-center">
                             <div class="text-center">
                                 <img ng-src="{{imageURL}}" ng-if="imageURL" class="img-thumbnail user-profile-picture">
                                 <img ng-src="modules/personals/img/profile/default.png"  ng-if="!imageURL" class="img-thumbnail user-profile-picture">
@@ -30,7 +30,7 @@
                             <div class="text-center ">
                                 <span class="btn btn-success btn-file"> Select Image <input type="file" nv-file-select uploader="uploader"> </span>
                             </div>
-                        </div><br>
+                        </div><br>-->
 
                          <!--<div class="form-group">
                             <label class="control-label" for="rating">Rating</label>
@@ -38,6 +38,15 @@
                                 <input-stars max="5" ng-model="createPrsnlCtrl.rating"></input-stars>
                             </div>
                         </div>-->
+
+                 <div class="text-center">
+                    <button type="button" class="btn btn-default" ng-click="upload()">Upload <span class="caret"></span> </button>
+                      <div style="margin-top:10px;">  
+                        <img class="prsnl-image" ng-src="{{createPrsnlCtrl.picture.url}}" ng-if="createPrsnlCtrl.picture.url" />
+                        <img class="prsnl-image" ng-src="modules/personals/img/profile/default.png" ng-if="!createPrsnlCtrl.picture.url" />
+                <!--</a>-->
+                     </div>
+                 </div>
 
                     </div>
 

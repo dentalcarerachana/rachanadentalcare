@@ -54,7 +54,8 @@ exports.update = function(req, res) {
     personal.rating = req.body.rating;
     personal.treatments = req.body.treatments;
     personal.slots = req.body.slots;
-    personal.profileImageURL = req.body.profileImageURL;
+    // personal.profileImageURL = req.body.profileImageURL;
+    personal.picture = req.body.picture;
 
     personal.save(function(err) {
         if (err) {
@@ -126,24 +127,24 @@ exports.personalByID = function(req, res, next, id) {
 /**
  * Update profile picture
  */
-exports.createPersonalPicture = function(req, res) {
-    var message = null;
-    var upload = multer(config.uploadPersonal.profileUpload).single('personalProfilePicture');
-    var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
+// exports.createPersonalPicture = function(req, res) {
+//     var message = null;
+//     var upload = multer(config.uploadPersonal.profileUpload).single('personalProfilePicture');
+//     var profileUploadFileFilter = require(path.resolve('./config/lib/multer')).profileUploadFileFilter;
 
-    // Filtering to upload only images
-    upload.fileFilter = profileUploadFileFilter;
+//     // Filtering to upload only images
+//     upload.fileFilter = profileUploadFileFilter;
 
-    if (req.user) {
-        var personal = new Personal();
-        upload(req, res, function(uploadError) {
-            if (uploadError) {
-                personal.profileImageURL = './modules/personals/img/profile/default.png';
-                res.json(personal);
-            } else {
-                personal.profileImageURL = './modules/personals/img/profile/uploads/' + req.file.filename;
-                res.json(personal);
-            }
-        });
-    }
-};
+//     if (req.user) {
+//         var personal = new Personal();
+//         upload(req, res, function(uploadError) {
+//             if (uploadError) {
+//                 personal.profileImageURL = './modules/personals/img/profile/default.png';
+//                 res.json(personal);
+//             } else {
+//                 personal.profileImageURL = './modules/personals/img/profile/uploads/' + req.file.filename;
+//                 res.json(personal);
+//             }
+//         });
+//     }
+// };

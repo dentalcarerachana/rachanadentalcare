@@ -67,7 +67,7 @@ var PersonalSchema = new Schema({
 
      picture: {
         type: Schema.Types.Mixed,
-        default: 'modules/personals/img/buttons/default.png'
+        default: 'modules/personals/img/profile/default.png'
     },
     
     treatments: [ApptTypeSchema],

@@ -134,9 +134,16 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
 
                     }
 
+                    // to cancel the events
+                    //          element.append( "<span class='closeon'>X</span>" );
+                    // element.find(".closeon").click(function() {
+                    //    $('#calendar').fullCalendar('removeEvents',event._id);
+                    // });
+
                 },
                 eventClick: $scope.alertOnEventClick
             }
+
         };
 
         this.toggleview = function () {
@@ -189,7 +196,7 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
         };
 
         $scope.myFilter = function (event) {
-            return  event.description !== 'On Vacation';
+            return event.description !== 'On Vacation';
         };
 
 

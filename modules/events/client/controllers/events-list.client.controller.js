@@ -50,8 +50,8 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                 resourceLabelText: 'Doctors',
 
                 resources: [
-                    { id: 'Dr. Manish Singh', title: 'Dr. Manish Singh', eventColor: 'green' },
-                    // { id: 'Yunus Tonse', title: 'Yunus Tonse', eventColor: 'green' },
+                    { id: 'Dr. Manish Kumar Singh', title: 'Dr. Manish Kumar Singh', eventColor: 'green' },
+                    { id: 'Dr. Swathi Iyengar', title: 'Dr. Swathi Iyengar', eventColor: 'brown' },
                     // { id: 'Dr Sanket Seth', title: 'Dr Sanket Seth', eventColor: '#FF00FF' },
                     // { id: 'Dr. Manoj DLima', title: 'Dr. Manoj DLima', eventColor: 'orange' },
                     // { id: 'Dr Venugopal H', title: 'Dr Venugopal H', eventColor: 'red' },

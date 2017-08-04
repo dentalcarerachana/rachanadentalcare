@@ -60,15 +60,15 @@ var PersonalSchema = new Schema({
         default: 0,
         trim: true
     },
-    //  profileImageURL: {
-    //     type: Schema.Types.Mixed,
-    //     default: './modules/personals/img/profile/default.png'
-    // },
-
-     picture: {
+     profileImageURL: {
         type: Schema.Types.Mixed,
-        default: 'modules/personals/img/profile/default.png'
+        default: './modules/personals/img/profile/default.png'
     },
+
+    //  picture: {
+    //     type: Schema.Types.Mixed,
+    //     default: 'modules/personals/img/profile/default.png'
+    // },
     
     treatments: [ApptTypeSchema],
     

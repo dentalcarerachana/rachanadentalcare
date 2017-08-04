@@ -1662,27 +1662,27 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
             });
 
             // Redirect after save
-            personal.$save(function (response) {
+            // personal.$save(function (response) {
 
-                // Clear form fields
-                $scope.fName = '';
-                $scope.lName = '';
-                $scope.emailId = '';
-                $scope.contact = '';
-                //$scope.isConsultant = '';
-                // $scope.regNumber = '';
-                $scope.speciality = '';
-                $scope.qualification = '';
-                $scope.experience = '';
-                $scope.rating = null;
-                $scope.selectedTreatments = null;
-                $scope.slots = null;
-                $scope.profileImageURL = null;
-                Notify.sendMsg('NewPersonal', { 'id': response._id });
+            //     // Clear form fields
+            //     $scope.fName = '';
+            //     $scope.lName = '';
+            //     $scope.emailId = '';
+            //     $scope.contact = '';
+            //     //$scope.isConsultant = '';
+            //     // $scope.regNumber = '';
+            //     $scope.speciality = '';
+            //     $scope.qualification = '';
+            //     $scope.experience = '';
+            //     $scope.rating = null;
+            //     $scope.selectedTreatments = null;
+            //     $scope.slots = null;
+            //     $scope.profileImageURL = null;
+            //     Notify.sendMsg('NewPersonal', { 'id': response._id });
 
-            }, function (errorResponse) {
-                $scope.error = errorResponse.data.message;
-            });
+            // }, function (errorResponse) {
+            //     $scope.error = errorResponse.data.message;
+            // });
 
             // Clear messages
             $scope.success = $scope.error = null;

@@ -54,8 +54,8 @@ exports.update = function(req, res) {
     personal.rating = req.body.rating;
     personal.treatments = req.body.treatments;
     personal.slots = req.body.slots;
-    personal.profileImageURL = req.body.profileImageURL;
-   // personal.picture = req.body.picture;
+    //personal.profileImageURL = req.body.profileImageURL;
+    personal.picture = req.body.picture;
 
     personal.save(function(err) {
         if (err) {

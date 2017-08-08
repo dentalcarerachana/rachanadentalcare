@@ -139,7 +139,6 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                     // element.find(".closeon").click(function() {
                     //    $('#calendar').fullCalendar('removeEvents',event._id);
                     // });
-
                 },
                 eventClick: $scope.alertOnEventClick
             }

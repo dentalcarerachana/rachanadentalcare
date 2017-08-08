@@ -836,7 +836,7 @@ eventCreateApp.controller('EventsCreateController',
                                         // },
                                         'disableTextInput': true,
                                         'timeFormat': 'g:ia',
-                                        'disableTimeRanges': eventArray
+                                        'disableTimeRanges':   [['1:30pm', '5pm']] //eventArray
                                     });
 
 
@@ -1054,7 +1054,6 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                     // element.find(".closeon").click(function() {
                     //    $('#calendar').fullCalendar('removeEvents',event._id);
                     // });
-
                 },
                 eventClick: $scope.alertOnEventClick
             }

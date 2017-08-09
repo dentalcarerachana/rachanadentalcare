@@ -836,7 +836,7 @@ eventCreateApp.controller('EventsCreateController',
                                         // },
                                         'disableTextInput': true,
                                         'timeFormat': 'g:ia',
-                                        'disableTimeRanges':   [['1:30pm', '5pm']] //eventArray
+                                        'disableTimeRanges': eventArray //[['1:30pm', '5pm']] //eventArray
                                     });
 
 

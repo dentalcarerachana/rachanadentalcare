@@ -855,7 +855,7 @@ eventCreateApp.controller('EventsCreateController',
                                     $('#timePick').timepicker({
                                         'minTime': startSlotTime,
                                         'maxTime': endSlotTime,
-                                        'step': '15',
+                                        'step': '30',
                                         // 'step': function (i) {
                                         // return (i % 2) ? 15 : 15;
                                         // },

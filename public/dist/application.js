@@ -816,7 +816,7 @@ eventCreateApp.controller('EventsCreateController',
                     $scope.event.step = this.selectedTreatment.duration;
 
                     slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })
-
+                // $scope.notavailable = '';
                     if (slot.day === _date) {
                         $googleCalendar.getEventByUser(this.selectedDentist, startDate, endDate)
                             .then(function (events) {
@@ -831,7 +831,7 @@ eventCreateApp.controller('EventsCreateController',
                             }, this);
                              
                                 for (var i = 0; i < slotArr.length; i++) {
-                                    
+                                     $scope.notavailable = '';
                                     if (slotArr.length > 1) {
                                         var st = slotArr[0].maxTime;
                                         var ed = slotArr[slotArr.length - 1].minTime;

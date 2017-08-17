@@ -805,6 +805,8 @@ eventCreateApp.controller('EventsCreateController',
                 var endDate = new Date($scope.event.startDate);
                 endDate.setHours(23, 59, 59, 999);
 
+                var slotArr = [];
+ 
                 for (var index = 0; index < this.selectedDentist.slots.length; index++) {
 
                     var slot = this.selectedDentist.slots[index];
@@ -813,6 +815,8 @@ eventCreateApp.controller('EventsCreateController',
                     $scope.event.maxTime = $filter('date')(new Date(slot.endtime), 'shortTime');
                     $scope.event.step = this.selectedTreatment.duration;
 
+                    slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })
+
                     if (slot.day === _date) {
                         $googleCalendar.getEventByUser(this.selectedDentist, startDate, endDate)
                             .then(function (events) {
@@ -820,34 +824,54 @@ eventCreateApp.controller('EventsCreateController',
                                 var eventArray = [];
 
                                 events.forEach(function (element) {
-                                    var event = [];
-                                    event.push(new Date(element.start.dateTime).toLocaleTimeString());
-                                    event.push(new Date(element.end.dateTime).toLocaleTimeString());
-                                    eventArray.push(event);
-                                }, this);
+                                var event = [];
+                                event.push(new Date(element.start.dateTime).toLocaleTimeString());
+                                event.push(new Date(element.end.dateTime).toLocaleTimeString());
+                                eventArray.push(event);
+                            }, this);
+                             
+                                for (var i = 0; i < slotArr.length; i++) {
+                                    
+                                    if (slotArr.length > 1) {
+                                        var st = slotArr[0].maxTime;
+                                        var ed = slotArr[slotArr.length - 1].minTime;
+
+                                        var datSE = [st, ed];
+                                        eventArray.push(datSE);
+
+                                        var startSlotTime = slotArr[0].minTime;
+                                        var endSlotTime = slotArr[slotArr.length - 1].maxTime;
+                                    }
+                                    else {
+                                        eventArray.push(slotArr[0].maxTime);
+                                        eventArray.push(slotArr[0].minTime);
+
+                                        var startSlotTime = slotArr[0].minTime;
+                                        var endSlotTime = slotArr[0].maxTime;
+                                    }
+                                }
 
                                 $(document).ready(function () {
                                     $('#timePick').timepicker({
-                                        'minTime': $scope.event.minTime,
-                                        'maxTime': $scope.event.maxTime,
+                                        'minTime': startSlotTime,
+                                        'maxTime': endSlotTime,
                                         'step': '15',
                                         // 'step': function (i) {
-                                        //     return (i % 2) ? 15 : 15;
+                                        // return (i % 2) ? 15 : 15;
                                         // },
                                         'disableTextInput': true,
                                         'timeFormat': 'g:ia',
                                         'disableTimeRanges': eventArray //[['1:30pm', '5pm']] //eventArray
                                     });
-
-
                                 });
                             });
 
                         $scope.notavailable = '';
-                        break;
+                        // break;
                     }
                     else {
-                        $scope.notavailable = 'No Slots Available for the selected date';   //$scope.notavailable = '';
+                        
+                        $scope.notavailable = 'No Slots Available for the selected date'; //$scope.notavailable = '';
                     }
                 }
             };
@@ -967,67 +991,6 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                 resources: [
                     { id: 'Dr. Manish Kumar Singh', title: 'Dr. Manish Kumar Singh', eventColor: 'green' },
                     { id: 'Dr. Swathi Iyengar', title: 'Dr. Swathi Iyengar', eventColor: 'brown' },
-                    // { id: 'Dr Sanket Seth', title: 'Dr Sanket Seth', eventColor: '#FF00FF' },
-                    // { id: 'Dr. Manoj DLima', title: 'Dr. Manoj DLima', eventColor: 'orange' },
-                    // { id: 'Dr Venugopal H', title: 'Dr Venugopal H', eventColor: 'red' },
-                    // { id: 'Dr Ajay Prabhu', title: 'Dr Ajay Prabhu', eventColor: 'lime' },
-                    // { id: 'Dr Pradeep Kharvi', title: 'Dr Pradeep Kharvi', eventColor: 'purple' },
-                    // { id: 'Dr Rajaram Shetty', title: 'Dr Rajaram Shetty', eventColor: '#9ACD32' },
-                    // { id: 'Dr Sudhir Rao', title: 'Dr Sudhir Rao', eventColor: 'maroon' },
-                    // { id: 'Dr Puneeth Hegde', title: 'Dr Puneeth Hegde', eventColor: 'black' },
-                    // { id: 'Dr Dilip Quadras', title: 'Dr Dilip Quadras', eventColor: '#FF00FF' },
-                    // { id: 'Dr Syed Mustafa Hasani', title: 'Dr Syed Mustafa Hasani', eventColor: '#0000FF' },
-                    // { id: 'Dr Gururaj Krishnamurthy', title: 'Dr Gururaj Krishnamurthy', eventColor: '#00FFFF' },
-                    // { id: 'Dr Shinaj Kumar', title: 'Dr Shinaj Kumar', eventColor: '#FFC0CB' },
-                    // { id: 'Dr Syed Faiz', title: 'Dr Syed Faiz', eventColor: '#BDB76B' },
-                    // { id: 'Name: Dr Shahinda Ismail', title: 'Name: Dr Shahinda Ismail', eventColor: '#00BFFF' },
-                    // { id: 'Dr Manav Kalra', title: 'Dr Manav Kalra', eventColor: '#9ACD32' },
-                    // { id: 'Dr Bennete Fernandes', title: 'Dr Bennete Fernandes', eventColor: '#FFFFE0' },
-                    // { id: 'Dr Nikhil Mahajan', title: 'Dr Nikhil Mahajan', eventColor: '#B8860B' },
-
-                    // { id: 'Dr Shilpa Gangwar', title: 'Dr Shilpa Gangwar', eventColor: 'maroon' },
-                    // { id: 'Dr Reshma Mehta', title: 'Dr Reshma Mehta', eventColor: 'green' },
-                    // { id: 'Dr Pradeep Vighne', title: 'Dr Pradeep Vighne', eventColor: '#FF00FF' },
-                    // { id: 'Dr Ayush Srivastava', title: 'Dr Ayush Srivastava', eventColor: 'orange' },
-                    // { id: 'Dr Richa Vajpeyee', title: 'Dr Richa Vajpeyee', eventColor: 'red' },
-                    // { id: 'Dr Amaey Parekh', title: 'Dr Amaey Parekh', eventColor: 'lime' },
-                    // { id: 'Dr Ankit Jha', title: 'Dr Ankit Jha', eventColor: 'purple' },
-                    // { id: 'Dr Akhilesh Kaushik', title: 'Dr Akhilesh Kaushik', eventColor: '#9ACD32' },
-                    // { id: 'Dr Ritu Gupta', title: 'Dr Ritu Gupta', eventColor: 'maroon' },
-                    // { id: 'Dr Henal Gandhi', title: 'Dr Henal Gandhi', eventColor: 'black' },
-                    // { id: 'Dr Seema Herle', title: 'Dr Seema Herle', eventColor: '#FF00FF' },
-                    // { id: 'Dr Namitha P. Kamath', title: 'Dr Namitha P. Kamath', eventColor: '#0000FF' },
-                    // { id: 'Dr Prashanth Ramachandra', title: 'Dr Prashanth Ramachandra', eventColor: '#00FFFF' },
-                    // { id: 'Dr Tanvi Patil', title: 'Dr Tanvi Patil', eventColor: '#FFC0CB' },
-                    // { id: 'Dr Sonali Das', title: 'Dr Sonali Das', eventColor: '#BDB76B' },
-                    // { id: 'Dr Samir Kumar Praharaj', title: 'Dr Samir Kumar Praharaj', eventColor: '#00BFFF' },
-                    // { id: 'Dr Raghavan Sreevatsan', title: 'Dr Raghavan Sreevatsan', eventColor: '#9ACD32' },
-                    // { id: 'Dr.Evit John', title: 'Dr.Evit John', eventColor: '#FFFFE0' },
-                    // { id: 'Rajamma Sister', title: 'Rajamma Sister', eventColor: '#B8860B' },
-
-                    // { id: 'Dr Sandeep Pai', title: 'Dr Sandeep Pai', eventColor: 'maroon' },
-                    // { id: 'Dr Akshay', title: 'Dr Akshay', eventColor: 'green' },
-                    // { id: 'Dr Ganesh Kamath', title: 'Dr Ganesh Kamath', eventColor: '#FF00FF' },
-                    // { id: 'Dr Sunil & Team', title: 'Dr Sunil & Team', eventColor: 'orange' },
-                    // { id: 'Dr. Rajesh', title: 'Dr. Rajesh', eventColor: 'red' },
-                    // { id: 'Dr Preeti', title: 'Dr Preeti', eventColor: 'lime' },
-                    // { id: 'Dr Avinash', title: 'Dr Avinash', eventColor: 'purple' },
-                    // { id: 'Dr. Ramesh S. Ve', title: 'Dr. Ramesh S. Ve', eventColor: '#9ACD32' },
-                    // { id: 'Dr Khushboo', title: 'Dr Khushboo', eventColor: 'maroon' },
-                    // { id: 'Dr. Vishwanath', title: 'Dr. Vishwanath', eventColor: 'black' },
-                    // { id: 'Dr. Radhika SOAHS', title: 'Dr. Radhika SOAHS', eventColor: '#FF00FF' },
-                    // { id: 'Dr Varsha', title: 'Dr Varsha', eventColor: '#0000FF' },
-                    // { id: 'Dr nagraj p g optom', title: 'Dr nagraj p g optom', eventColor: '#00FFFF' },
-                    // { id: 'Dr Pooja', title: 'Dr Pooja', eventColor: '#FFC0CB' },
-                    // { id: 'Dr Aishwarya S', title: 'Dr Aishwarya S', eventColor: '#BDB76B' },
-                    // { id: 'Dr Dr Aishwarya Shetty', title: 'Dr Aishwarya Shetty', eventColor: '#00BFFF' },
-                    // { id: 'Dr Apoorva', title: 'Dr Apoorva', eventColor: '#9ACD32' },
-                    // { id: 'Dr.Suresh Shenoy', title: 'Dr.Suresh Shenoy', eventColor: '#FFFFE0' },
-                    // { id: 'Dr.Priyanka Agarwal', title: 'Dr.Priyanka Agarwal', eventColor: '#B8860B' },
-
-                    // { id: 'Dr N Prakash', title: 'Dr N Prakash', eventColor: '#9ACD32' },
-                    // { id: 'Dr Mayank Sharma', title: 'Dr Mayank Sharma', eventColor: '#FFFFE0' },
-                    // { id: 'Dr.Shrey Dhawan', title: 'Dr.Shrey Dhawan', eventColor: '#B8860B' },
                 ],
 
                 eventRender: function (event, element) {

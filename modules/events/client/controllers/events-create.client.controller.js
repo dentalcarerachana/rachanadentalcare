@@ -132,6 +132,12 @@ eventCreateApp.controller('EventsCreateController',
 
             };
 
+            function getRefactoredTime(amPmString, step) {
+                var d = new Date("1/1/2013 " + amPmString);
+                d.setTime(d.getTime() - step*1000);
+                return $filter('date')(new Date(d), 'shortTime');
+            }
+
             this.updateTime = function () {
 
                 $scope.notavailable = '';
@@ -147,7 +153,7 @@ eventCreateApp.controller('EventsCreateController',
                 endDate.setHours(23, 59, 59, 999);
 
                 var slotArr = [];
- 
+
                 for (var index = 0; index < this.selectedDentist.slots.length; index++) {
 
                     var slot = this.selectedDentist.slots[index];
@@ -157,7 +163,7 @@ eventCreateApp.controller('EventsCreateController',
                     $scope.event.step = this.selectedTreatment.duration;
 
                     slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })
-                // $scope.notavailable = '';
+
                     if (slot.day === _date) {
                         $googleCalendar.getEventByUser(this.selectedDentist, startDate, endDate)
                             .then(function (events) {
@@ -165,14 +171,14 @@ eventCreateApp.controller('EventsCreateController',
                                 var eventArray = [];
 
                                 events.forEach(function (element) {
-                                var event = [];
-                                event.push(new Date(element.start.dateTime).toLocaleTimeString());
-                                event.push(new Date(element.end.dateTime).toLocaleTimeString());
-                                eventArray.push(event);
-                            }, this);
-                             
+                                    var event = [];
+                                    event.push(new Date(element.start.dateTime).toLocaleTimeString());
+                                    event.push(new Date(element.end.dateTime).toLocaleTimeString());
+                                    eventArray.push(event);
+                                }, this);
+
                                 for (var i = 0; i < slotArr.length; i++) {
-                                     $scope.notavailable = '';
+                                    $scope.notavailable = '';
                                     if (slotArr.length > 1) {
                                         var st = slotArr[0].maxTime;
                                         var ed = slotArr[slotArr.length - 1].minTime;
@@ -192,17 +198,16 @@ eventCreateApp.controller('EventsCreateController',
                                     }
                                 }
 
+                                var maxTime = getRefactoredTime(endSlotTime ,$scope.event.step);
                                 $(document).ready(function () {
+                                   // var d = new Date();
                                     $('#timePick').timepicker({
                                         'minTime': startSlotTime,
-                                        'maxTime': endSlotTime,
-                                        'step': '30',
-                                        // 'step': function (i) {
-                                        // return (i % 2) ? 15 : 15;
-                                        // },
+                                        'maxTime': maxTime,
+                                        'step': $scope.event.step,
                                         'disableTextInput': true,
                                         'timeFormat': 'g:ia',
-                                        'disableTimeRanges': eventArray //[['1:30pm', '5pm']] //eventArray
+                                        'disableTimeRanges': eventArray
                                     });
                                 });
                             });
@@ -211,7 +216,7 @@ eventCreateApp.controller('EventsCreateController',
                         // break;
                     }
                     else {
-                        
+
                         $scope.notavailable = 'No Slots Available for the selected date'; //$scope.notavailable = '';
                     }
                 }

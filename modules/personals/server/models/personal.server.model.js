@@ -20,7 +20,7 @@ var PersonalSchema = new Schema({
         required: 'Please fill your last name',
         trim: true
     },
-    emailId: {
+    demailId: {
         type: String,
         default: '',
         required: 'Please fill your email id',

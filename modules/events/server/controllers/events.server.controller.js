@@ -208,7 +208,7 @@ exports.create = function (req, res, next) {
                 },
                 'attendees': [
                     {
-                        'email': req.body.personal.emailId,
+                        'email': req.body.personal.demailId,
                         'organizer': true,
                         'self': true
                     }
@@ -233,8 +233,8 @@ exports.create = function (req, res, next) {
             if (req.body.patient.contact) {
                 description += '\n Contact: ' + req.body.patient.contact;
             }
-            if (req.body.patient.emailId) {
-                description += '\n Email Id: ' + req.body.patient.emailId;
+            if (req.body.patient.pemailId) {
+                description += '\n Email Id: ' + req.body.patient.pemailId;
             }
             if (req.body.patient.patientSelectedMedicalCondition.length) {
                 description += '\n Medical Condition: ' + req.body.patient.patientSelectedMedicalCondition;
@@ -246,7 +246,7 @@ exports.create = function (req, res, next) {
                 description += '\n Treatment: ' + req.body.personal.treatment;
             }
 
-            if (req.body.patient.emailId) {
+            if (req.body.patient.pemailId) {
                 eventBody = {
                     'status': 'confirmed',
                     'summary': req.body.personal.doctorName,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
@@ -278,14 +278,14 @@ exports.create = function (req, res, next) {
                     'attendees': [
                         {
                             'displayName': 'Doctor Email ID',
-                            'email': req.body.personal.emailId,
+                            'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction'
                         },
                         {
                             //'displayName': 'Patient Email ID',
-                            'email': req.body.patient.emailId,
+                            'email': req.body.patient.pemailId,
                             'organizer': false,
                             'responseStatus': 'needsAction'
                         }
@@ -323,7 +323,7 @@ exports.create = function (req, res, next) {
                     'attendees': [
                         {
                             'displayName': 'Doctor Email ID',
-                            'email': req.body.personal.emailId,
+                            'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction'

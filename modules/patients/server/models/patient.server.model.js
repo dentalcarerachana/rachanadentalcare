@@ -12,7 +12,7 @@ var PatientSchema = new Schema({
         default: '',
         trim: true
     },
-     emailId: {
+     pemailId: {
         type: String,
         default: '',
         trim: true

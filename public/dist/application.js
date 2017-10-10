@@ -767,6 +767,10 @@ eventCreateApp.controller('EventsCreateController',
                     emailId: $scope.event.patientEmail,
                     patientSelectedMedicalCondition: $scope.patientSelectedMedicalCondition,
                     patientChiefComplaint: $scope.event.patientChiefComplaint,
+                    treatment: this.selectedTreatment.description,
+                    startTime : $scope.event.startDate,
+                    endTime : endDate.setMinutes(endDate.getMinutes()),
+                    dentist: this.selectedDentist.fName + ' ' + this.selectedDentist.lName,
                 };
 
                 $rootScope.patient = $scope.patientInfo.patientName;

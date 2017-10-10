@@ -12,6 +12,10 @@
                 <th>Email</th>
                 <th>Medical Condition</th>
                 <th>Chief Complaint</th>
+                <th>Treatment</th>
+                <th>Dr.Name</th>
+                <th>Start Time</th>
+                <th>End Time</th>
             </tr>
         </thead>
 
@@ -28,6 +32,10 @@
                 <td>{{patient.emailId}}</td>
                 <td>{{patient.patientSelectedMedicalCondition}}</td>
                 <td>{{patient.patientChiefComplaint}}</td>
+                <td>{{patient.treatment}}</td>
+                <td>{{patient.dentist}}</td>
+                <td>{{patient.startTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
+                <td>{{patient.endTime | amDateFormat: 'dddd, MMMM Do YYYY, h:mm:ss a'}}</td>
             </tr>
         </tbody>
     </table>

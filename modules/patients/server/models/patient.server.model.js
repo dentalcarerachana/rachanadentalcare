@@ -41,6 +41,22 @@ var PatientSchema = new Schema({
     },
     patientSelectedMedicalCondition: {
         type: String
+    },
+     treatment: {
+         type: String,
+        default: '',
+        trim: true
+    },
+     startTime: {
+            type: Date
+        },
+    endTime: {
+            type: Date
+        },
+     dentist: {
+        type: String,
+        default: '',
+        trim: true
     }
 });
 

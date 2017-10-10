@@ -25,7 +25,7 @@ function sendSms(contactNumber) {
         'method': 'GET' // The method used to call the url
     };
 
-    // Prints the complete response
+    // Prints the complete responsez
     p.send_message(params, function (status, response) {
         console.log('Status: ', status);
         console.log('API Response:\n', response);
@@ -249,7 +249,7 @@ exports.create = function (req, res, next) {
             if (req.body.patient.emailId) {
                 eventBody = {
                     'status': 'confirmed',
-                    'summary': req.body.personal.doctorName,
+                    'summary': req.body.personal.doctorName,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
                     'description': description,
                     'organizer': {
                         'email': profile.email,
@@ -277,12 +277,14 @@ exports.create = function (req, res, next) {
                     'guestsCanModify': true,
                     'attendees': [
                         {
+                            'displayName': 'Doctor Email ID',
                             'email': req.body.personal.emailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction'
                         },
                         {
+                            'displayName': 'Patient Email ID',
                             'email': req.body.patient.emailId,
                             'organizer': false,
                             'responseStatus': 'needsAction'
@@ -293,7 +295,7 @@ exports.create = function (req, res, next) {
             else {
                 eventBody = {
                     'status': 'confirmed',
-                    'summary': req.body.personal.doctorName,
+                    'summary': req.body.personal.doctorName, // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
                     'description': description,
                     'organizer': {
                         'email': profile.email,
@@ -320,6 +322,7 @@ exports.create = function (req, res, next) {
                     },
                     'attendees': [
                         {
+                            'displayName': 'Doctor Email ID',
                             'email': req.body.personal.emailId,
                             'organizer': true,
                             'self': true,

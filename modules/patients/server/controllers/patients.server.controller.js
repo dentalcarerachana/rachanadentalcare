@@ -49,6 +49,10 @@ exports.update = function(req, res) {
     patient.emailId = req.body.emailId;
     patient.patientSelectedMedicalCondition = req.body.patientSelectedMedicalCondition;
     patient.patientChiefComplaint = req.body.patientChiefComplaint;
+    treatment.description = req.body.description;
+    patient.startTime = req.body.startTime;
+    patient.endTime = req.body.endTime;
+    patient.dentist = req.body.dentist;
     patient.save(function(err) {
         if (err) {
             return res.status(400).send({

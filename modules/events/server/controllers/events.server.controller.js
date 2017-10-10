@@ -284,7 +284,7 @@ exports.create = function (req, res, next) {
                             'responseStatus': 'needsAction'
                         },
                         {
-                            'displayName': 'Patient Email ID',
+                            //'displayName': 'Patient Email ID',
                             'email': req.body.patient.emailId,
                             'organizer': false,
                             'responseStatus': 'needsAction'

@@ -281,13 +281,15 @@ exports.create = function (req, res, next) {
                             'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,
-                            'responseStatus': 'needsAction'
+                            'responseStatus': 'needsAction',
+                            'comment': 'Doctor'
                         },
                         {
                             //'displayName': req.body.patient.patientName,
                             'email': req.body.patient.pemailId,
                             'organizer': false,
-                            'responseStatus': 'needsAction'
+                            'responseStatus': 'needsAction',
+                            'comment': 'Patient'
                         }
                     ]
                 };
@@ -326,7 +328,8 @@ exports.create = function (req, res, next) {
                             'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,
-                            'responseStatus': 'needsAction'
+                            'responseStatus': 'needsAction',
+                            'comment': 'Doctor'
                         }
                     ]
                 };

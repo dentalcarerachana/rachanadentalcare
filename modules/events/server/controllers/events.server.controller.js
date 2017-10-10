@@ -249,7 +249,7 @@ exports.create = function (req, res, next) {
             if (req.body.patient.pemailId) {
                 eventBody = {
                     'status': 'confirmed',
-                    'summary': req.body.personal.doctorName,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
+                    'summary': req.body.patient.patientName + ' , ' + req.body.personal.doctorNamee,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
                     'description': description,
                     'organizer': {
                         'email': profile.email,
@@ -285,7 +285,6 @@ exports.create = function (req, res, next) {
                             'comment': 'Doctor'
                         },
                         {
-                            //'displayName': req.body.patient.patientName,
                             'email': req.body.patient.pemailId,
                             'organizer': false,
                             'responseStatus': 'needsAction',
@@ -297,7 +296,7 @@ exports.create = function (req, res, next) {
             else {
                 eventBody = {
                     'status': 'confirmed',
-                    'summary': req.body.personal.doctorName, // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
+                    'summary': req.body.patient.patientName + ' , ' + req.body.personal.doctorName, // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
                     'description': description,
                     'organizer': {
                         'email': profile.email,

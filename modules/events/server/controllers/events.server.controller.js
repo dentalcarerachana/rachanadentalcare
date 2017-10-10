@@ -322,7 +322,7 @@ exports.create = function (req, res, next) {
                     },
                     'attendees': [
                         {
-                            'displayName': 'Doctor Email ID',
+                           'displayName': req.body.personal.doctorName,
                             'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,

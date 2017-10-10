@@ -277,14 +277,14 @@ exports.create = function (req, res, next) {
                     'guestsCanModify': true,
                     'attendees': [
                         {
-                            'displayName': 'Doctor Email ID',
+                            'displayName': req.body.personal.doctorName,
                             'email': req.body.personal.demailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction'
                         },
                         {
-                            //'displayName': 'Patient Email ID',
+                            //'displayName': req.body.patient.patientName,
                             'email': req.body.patient.pemailId,
                             'organizer': false,
                             'responseStatus': 'needsAction'

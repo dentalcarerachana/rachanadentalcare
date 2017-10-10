@@ -764,7 +764,7 @@ eventCreateApp.controller('EventsCreateController',
                     patientGender: $scope.event.patientGender,
                     patientPlace: $scope.event.patientPlace,
                     contact: $scope.event.patientPhoneNumber,
-                    pemailId: $scope.event.patientEmail,
+                    emailId: $scope.event.patientEmail,
                     patientSelectedMedicalCondition: $scope.patientSelectedMedicalCondition,
                     patientChiefComplaint: $scope.event.patientChiefComplaint,
                     treatment: this.selectedTreatment.description,
@@ -779,7 +779,7 @@ eventCreateApp.controller('EventsCreateController',
 
                 var contactInfo = {
                     doctorName: this.selectedDentist.fName + ' ' + this.selectedDentist.lName,
-                    demailId: this.selectedDentist.demailId,
+                    emailId: this.selectedDentist.emailId,
                     treatment: this.selectedTreatment.description
                 };
 
@@ -1780,7 +1780,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
       var personal = new Personals({
         fName: this.fName,
         lName: this.lName,
-        demailId: this.demailId,
+        emailId: this.emailId,
         contact: this.contact,
         //isConsultant: this.isConsultant,
         speciality: this.speciality,
@@ -1798,7 +1798,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
         // Clear form fields
         $scope.fName = '';
         $scope.lName = '';
-        $scope.demailId = '';
+        $scope.emailId = '';
         $scope.contact = '';
         //$scope.isConsultant = '';
         $scope.speciality = '';

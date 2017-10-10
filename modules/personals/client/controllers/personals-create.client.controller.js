@@ -150,7 +150,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
       var personal = new Personals({
         fName: this.fName,
         lName: this.lName,
-        demailId: this.demailId,
+        emailId: this.emailId,
         contact: this.contact,
         //isConsultant: this.isConsultant,
         speciality: this.speciality,
@@ -168,7 +168,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
         // Clear form fields
         $scope.fName = '';
         $scope.lName = '';
-        $scope.demailId = '';
+        $scope.emailId = '';
         $scope.contact = '';
         //$scope.isConsultant = '';
         $scope.speciality = '';

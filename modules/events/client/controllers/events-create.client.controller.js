@@ -105,7 +105,7 @@ eventCreateApp.controller('EventsCreateController',
                     patientGender: $scope.event.patientGender,
                     patientPlace: $scope.event.patientPlace,
                     contact: $scope.event.patientPhoneNumber,
-                    pemailId: $scope.event.patientEmail,
+                    emailId: $scope.event.patientEmail,
                     patientSelectedMedicalCondition: $scope.patientSelectedMedicalCondition,
                     patientChiefComplaint: $scope.event.patientChiefComplaint,
                     treatment: this.selectedTreatment.description,
@@ -120,7 +120,7 @@ eventCreateApp.controller('EventsCreateController',
 
                 var contactInfo = {
                     doctorName: this.selectedDentist.fName + ' ' + this.selectedDentist.lName,
-                    demailId: this.selectedDentist.demailId,
+                    emailId: this.selectedDentist.emailId,
                     treatment: this.selectedTreatment.description
                 };
 

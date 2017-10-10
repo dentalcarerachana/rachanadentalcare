@@ -208,7 +208,7 @@ exports.create = function (req, res, next) {
                 },
                 'attendees': [
                     {
-                        'email': req.body.personal.demailId,
+                        'email': req.body.personal.emailId,
                         'organizer': true,
                         'self': true
                     }
@@ -233,8 +233,8 @@ exports.create = function (req, res, next) {
             if (req.body.patient.contact) {
                 description += '\n Contact: ' + req.body.patient.contact;
             }
-            if (req.body.patient.pemailId) {
-                description += '\n Email Id: ' + req.body.patient.pemailId;
+            if (req.body.patient.emailId) {
+                description += '\n Email Id: ' + req.body.patient.emailId;
             }
             if (req.body.patient.patientSelectedMedicalCondition.length) {
                 description += '\n Medical Condition: ' + req.body.patient.patientSelectedMedicalCondition;
@@ -246,10 +246,10 @@ exports.create = function (req, res, next) {
                 description += '\n Treatment: ' + req.body.personal.treatment;
             }
 
-            if (req.body.patient.pemailId) {
+            if (req.body.patient.emailId) {
                 eventBody = {
                     'status': 'confirmed',
-                    'summary': req.body.patient.patientName + ' , ' + req.body.personal.doctorNamee,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
+                    'summary': req.body.patient.patientName + ' , ' + req.body.personal.doctorName,  // req.body.patient.patientName + ' , ' + req.body.personal.doctorName,
                     'description': description,
                     'organizer': {
                         'email': profile.email,
@@ -278,14 +278,14 @@ exports.create = function (req, res, next) {
                     'attendees': [
                         {
                             'displayName': req.body.personal.doctorName,
-                            'email': req.body.personal.demailId,
+                            'email': req.body.personal.emailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction',
                             'comment': 'Doctor'
                         },
                         {
-                            'email': req.body.patient.pemailId,
+                            'email': req.body.patient.emailId,
                             'organizer': false,
                             'responseStatus': 'needsAction',
                             'comment': 'Patient'
@@ -324,7 +324,7 @@ exports.create = function (req, res, next) {
                     'attendees': [
                         {
                            'displayName': req.body.personal.doctorName,
-                            'email': req.body.personal.demailId,
+                            'email': req.body.personal.emailId,
                             'organizer': true,
                             'self': true,
                             'responseStatus': 'needsAction',

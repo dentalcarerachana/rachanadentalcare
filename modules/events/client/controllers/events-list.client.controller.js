@@ -112,6 +112,8 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
 
                 for (var index = 0; index < events.length; index++) {
                     var event = events[index];
+                    
+                    if(event.status === "confirmed"){
 
                     $scope.calEvents[index] = {
                         'title': event.summary,
@@ -121,10 +123,17 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                         'resourceId': event.summary,
                         'stick': 'true',
                     };
+                }
                     console.log(event.summary);
                 }
 
             });
+        };
+        
+        //Custom filter  to hide the deleted events in app calenadr
+        
+         $scope.myFilter1 = function (event) {
+            return event.status === "confirmed";
         };
 
         $scope.eventSources = [$scope.calEvents];

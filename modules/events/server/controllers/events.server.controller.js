@@ -152,7 +152,7 @@ exports.list = function (req, res, next) {
         var calendarId = user.email;
         var calendar = new gcal.GoogleCalendar(accessToken);
 
-        calendar.events.list(calendarId, { 'timeMin': new Date().toISOString(), 'singleEvents': true }, function (err, eventList) {
+        calendar.events.list(calendarId, { 'timeMin': new Date().toISOString(), 'singleEvents': true, 'showDeleted': true }, function (err, eventList) {
 
             if (err) {
                 return res.status(400).send({
@@ -394,6 +394,5 @@ exports.deleteEvent = function (req, res, next) {
 
     });
 }
-
 
 

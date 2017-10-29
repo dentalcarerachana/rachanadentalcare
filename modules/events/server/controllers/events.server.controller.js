@@ -192,11 +192,11 @@ exports.create = function (req, res, next) {
                     'overrides': [
                         {
                             'method': 'email',
-                            'minutes': '40320'
+                            'minutes': '1140'
                         },
                         {
                             'method': 'email',
-                            'minutes': '40320'
+                            'minutes': '1140'
                         }
                     ]
                 },
@@ -260,11 +260,11 @@ exports.create = function (req, res, next) {
                         'overrides': [
                             {
                                 'method': 'email',
-                                'minutes': '40320'
+                                'minutes': '1140'
                             },
                             {
                                 'method': 'popup',
-                                'minutes': '40320'
+                                'minutes': '1140'
                             }
                         ]
                     },
@@ -307,11 +307,11 @@ exports.create = function (req, res, next) {
                         'overrides': [
                             {
                                 'method': 'email',
-                                'minutes': '40320'
+                                'minutes': '1140'
                             },
                             {
                                 'method': 'popup',
-                                'minutes': '40320'
+                                'minutes': '1140'
                             }
                         ]
                     },

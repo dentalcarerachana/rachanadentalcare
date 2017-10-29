@@ -192,11 +192,11 @@ exports.create = function (req, res, next) {
                     'overrides': [
                         {
                             'method': 'email',
-                            'minutes': '1140'
+                            'minutes': '40320'
                         },
                         {
                             'method': 'email',
-                            'minutes': '1140'
+                            'minutes': '40320'
                         }
                     ]
                 },
@@ -260,11 +260,11 @@ exports.create = function (req, res, next) {
                         'overrides': [
                             {
                                 'method': 'email',
-                                'minutes': '1140'
+                                'minutes': '40320'
                             },
                             {
                                 'method': 'popup',
-                                'minutes': '1140'
+                                'minutes': '40320'
                             }
                         ]
                     },
@@ -307,11 +307,11 @@ exports.create = function (req, res, next) {
                         'overrides': [
                             {
                                 'method': 'email',
-                                'minutes': '1140'
+                                'minutes': '40320'
                             },
                             {
                                 'method': 'popup',
-                                'minutes': '1140'
+                                'minutes': '40320'
                             }
                         ]
                     },
@@ -339,7 +339,7 @@ exports.create = function (req, res, next) {
         var calendar = new gcal.GoogleCalendar(profile.providerData.accessToken);
 
         calendar.events.insert(profile.email, eventBody,{
-            calendarId: 'primary',
+            calendarId:  'primary',
             sendNotifications :true,
           }, function (err, response) {
 

@@ -74,10 +74,10 @@
 
                 <md-input-container class="age" style="margin-left:55px;margin-top:0">
                     <label style="margin-left:7px">Age</label>
-                    <input id="ageid" required class="ageinput"  name="patientAge" type="number" ng-model="$parent.event.patientAge" min="0" ng-pattern="/^[0-9]{1,2}$/">
+                    <input id="ageid" required class="ageinput"  name="patientAge" type="number" ng-model="$parent.event.patientAge" min="0" ng-pattern="/^[0-9]{1,3}$/">
                     <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientAge.$touched">
                         <div ng-show="patientForm.patientAge.$error.required"><b>Please fill  age</b></div>
-                        <div ng-show="patientForm.patientAge.$error.pattern"><b>Enter age between 1 to 2 digits only</b></div>
+                        <div ng-show="patientForm.patientAge.$error.pattern"><b>Enter age between 1 to 3 digits only</b></div>
                     </div>
                 </md-input-container>
 

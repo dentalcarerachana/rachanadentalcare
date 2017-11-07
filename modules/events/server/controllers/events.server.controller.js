@@ -376,7 +376,10 @@ exports.deleteEvent = function (req, res, next) {
             eventId: req.params._id,
         };
 
-        calendar.events.delete(calendarId, req.params._id, function (err, response) {
+        calendar.events.delete(calendarId, req.params._id, {
+            calendarId:  'primary',
+            sendNotifications :true,
+          }, function (err, response) {
 
             if (err) {
                 return res.status(400).send({

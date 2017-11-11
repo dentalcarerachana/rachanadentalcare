@@ -48,7 +48,7 @@ function authorize(refreshToken) {
             function (err, access_token, refresh_token, res) {
 
                 //lookup settings from database
-                User.findOne({ username: 'manaswaoral' }, function (findError, settings) {
+                User.findOne({ username: 'manaswamaster' }, function (findError, settings) {
                     if (res !== undefined) {
                         var expiresIn = parseInt(res.expires_in);
                         var accessTokenExpiration = new Date().getTime() + (expiresIn * 1000);
@@ -81,7 +81,7 @@ function getAccessToken() {
     var accessToken;
 
 
-    User.findOne({ username: 'manaswaoral' }, function (findError, settings) {
+    User.findOne({ username: 'manaswamaster' }, function (findError, settings) {
         //check if access token is still valid
         var today = new Date();
         var currentTime = today.getTime();
@@ -211,6 +211,13 @@ exports.create = function (req, res, next) {
                         'email': req.body.personal.emailId,
                         'organizer': true,
                         'self': true
+                    },
+                    {
+                        'email': 'manaswaoral@gmail.com',
+                        'organizer': true,
+                        'self': true,
+                        'responseStatus': 'needsAction',
+                        'comment': 'Admin'
                     }
                 ]
             };
@@ -285,6 +292,13 @@ exports.create = function (req, res, next) {
                             'comment': 'Doctor'
                         },
                         {
+                            'email': 'manaswaoral@gmail.com',
+                            'organizer': true,
+                            'self': true,
+                            'responseStatus': 'needsAction',
+                            'comment': 'Admin'
+                        },
+                        {
                             'email': req.body.patient.emailId,
                             'organizer': false,
                             'responseStatus': 'needsAction',
@@ -329,7 +343,14 @@ exports.create = function (req, res, next) {
                             'self': true,
                             'responseStatus': 'needsAction',
                             'comment': 'Doctor'
-                        }
+                        },
+                        {
+                            'email': 'manaswaoral@gmail.com',
+                            'organizer': true,
+                            'self': true,
+                            'responseStatus': 'needsAction',
+                            'comment': 'Admin'
+                        },
                     ]
                 };
             }

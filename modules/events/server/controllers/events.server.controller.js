@@ -353,30 +353,30 @@ exports.create = function (req, res, next) {
 
                     //Message starts
 
-                    // function sendSms(contactNumber) {
+                    function sendSms(contactNumber) {
                         
-                    //     var strtdate = new Date(req.body.startdate);
-                    //     var enddte = new Date(req.body.enddate);
-                    //     console.log(strtdate.getDate());
-                    //     console.log(enddte.getDate());
+                        var strtdate = new Date(req.body.startdate);
+                        var enddte = new Date(req.body.enddate);
+                        console.log(strtdate.getDate());
+                        console.log(enddte.getDate());
 
-                    //     var params = {
-                    //         'src': 'ALPHA-ID', // Sender's phone number with country code
-                    //         'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
-                    //         'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + strtdate + ' To ' + enddte
-                    //         + ' with ' + req.body.personal.doctorName + ' is confirmed Thankyou' , 
-                    //         'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
-                    //         'method': 'GET' // The method used to call the url
-                    //     };
-                    //     // Prints the complete responsez
-                    //     p.send_message(params, function (status, response) {
-                    //         console.log('Status: ', status);
-                    //         console.log('API Response:\n', response);
-                    //         console.log('Message UUID:\n', response['message.uuid']);
-                    //         console.log('Api ID:\n', response['api.id']);
-                    //     });
-                    // }
-                    // sendSms(req.body.patient.contact);
+                        var params = {
+                            'src': 'ALPHA-ID', // Sender's phone number with country code
+                            'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
+                            'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + strtdate + ' To ' + enddte
+                            + ' with ' + req.body.personal.doctorName + ' is confirmed Thankyou' , 
+                            'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
+                            'method': 'GET' // The method used to call the url
+                        };
+                        // Prints the complete responsez
+                        p.send_message(params, function (status, response) {
+                            console.log('Status: ', status);
+                            console.log('API Response:\n', response);
+                            console.log('Message UUID:\n', response['message.uuid']);
+                            console.log('Api ID:\n', response['api.id']);
+                        });
+                    }
+                    sendSms(req.body.patient.contact);
                     //Message ends
                 }
 

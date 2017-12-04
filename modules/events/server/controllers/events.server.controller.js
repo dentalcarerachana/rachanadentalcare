@@ -14,25 +14,24 @@ var patientController = require(path.resolve('./modules/patients/server/controll
 var plivo = require('plivo');
 var p = plivo.RestAPI({ authId: 'MAY2NKNMU5MMEYZMQ4YW', authToken: 'MjQ5NTI0NzBlYThlNmRjNjhiYTlhOWFkY2VkNTdl' });
 
-function sendSms(contactNumber) {
-    var params = {
-        'src': '+919845293868', // Sender's phone number with country code +919972095929
-        'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
-        'text': 'Hi,  Your Appointment is Confirmed  Thank You', // Your SMS Text Message - English
-        //'text' :  // Your SMS Text Message - Japanese
-        //'text' : // Your SMS Text Message - French
-        'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
-        'method': 'GET' // The method used to call the url
-    };
-
-    // Prints the complete responsez
-    p.send_message(params, function (status, response) {
-        console.log('Status: ', status);
-        console.log('API Response:\n', response);
-        console.log('Message UUID:\n', response['message.uuid']);
-        console.log('Api ID:\n', response['api.id']);
-    });
-}
+// function sendSms(contactNumber) {
+//     var params = {
+//         'src': '+919972095929', // Sender's phone number with country code
+//         'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
+//         'text': 'Hi,  Your Appointment is Confirmed  Thank You', // Your SMS Text Message - English
+//         //'text' :  // Your SMS Text Message - Japanese
+//         //'text' : // Your SMS Text Message - French
+//         'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
+//         'method': 'GET' // The method used to call the url
+//     };
+//     // Prints the complete responsez
+//     p.send_message(params, function (status, response) {
+//         console.log('Status: ', status);
+//         console.log('API Response:\n', response);
+//         console.log('Message UUID:\n', response['message.uuid']);
+//         console.log('Api ID:\n', response['api.id']);
+//     });
+// }
 
 function authorize(refreshToken) {
     var deferred = q.defer();
@@ -48,7 +47,7 @@ function authorize(refreshToken) {
             function (err, access_token, refresh_token, res) {
 
                 //lookup settings from database
-                User.findOne({ username: 'manaswamaster' }, function (findError, settings) {
+                User.findOne({ username: 'manaswaoral' }, function (findError, settings) {
                     if (res !== undefined) {
                         var expiresIn = parseInt(res.expires_in);
                         var accessTokenExpiration = new Date().getTime() + (expiresIn * 1000);
@@ -81,7 +80,7 @@ function getAccessToken() {
     var accessToken;
 
 
-    User.findOne({ username: 'manaswamaster' }, function (findError, settings) {
+    User.findOne({ username: 'manaswaoral' }, function (findError, settings) {
         //check if access token is still valid
         var today = new Date();
         var currentTime = today.getTime();
@@ -212,13 +211,6 @@ exports.create = function (req, res, next) {
                         'organizer': true,
                         'self': true
                     },
-                    {
-                        'email': 'manaswaoral@gmail.com',
-                        'organizer': true,
-                        'self': true,
-                        'responseStatus': 'needsAction',
-                        'comment': 'Admin'
-                    }
                 ]
             };
         }
@@ -292,13 +284,6 @@ exports.create = function (req, res, next) {
                             'comment': 'Doctor'
                         },
                         {
-                            'email': 'manaswaoral@gmail.com',
-                            'organizer': true,
-                            'self': true,
-                            'responseStatus': 'needsAction',
-                            'comment': 'Admin'
-                        },
-                        {
                             'email': req.body.patient.emailId,
                             'organizer': false,
                             'responseStatus': 'needsAction',
@@ -344,13 +329,6 @@ exports.create = function (req, res, next) {
                             'responseStatus': 'needsAction',
                             'comment': 'Doctor'
                         },
-                        {
-                            'email': 'manaswaoral@gmail.com',
-                            'organizer': true,
-                            'self': true,
-                            'responseStatus': 'needsAction',
-                            'comment': 'Admin'
-                        },
                     ]
                 };
             }
@@ -372,7 +350,34 @@ exports.create = function (req, res, next) {
                 res.send(response);
                 if (req.body.patient) {
                     patientController.create(req.body.patient);
+
+                    //Message starts
+
+                    function sendSms(contactNumber) {
+                        
+                        var strtdate = new Date(req.body.startdate);
+                        var enddte = new Date(req.body.enddate);
+                        console.log(strtdate.getDate());
+                        console.log(enddte.getDate());
+
+                        var params = {
+                            'src': 'ALPHA-ID', // Sender's phone number with country code
+                            'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
+                            'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + strtdate + ' To ' + enddte
+                            + ' with ' + req.body.personal.doctorName + ' is confirmed Thankyou' , 
+                            'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
+                            'method': 'GET' // The method used to call the url
+                        };
+                        // Prints the complete responsez
+                        p.send_message(params, function (status, response) {
+                            console.log('Status: ', status);
+                            console.log('API Response:\n', response);
+                            console.log('Message UUID:\n', response['message.uuid']);
+                            console.log('Api ID:\n', response['api.id']);
+                        });
+                    }
                     sendSms(req.body.patient.contact);
+                    //Message ends
                 }
 
             }
@@ -408,7 +413,26 @@ exports.deleteEvent = function (req, res, next) {
                 });
             } else {
                 res.send(response);
-
+                //Message starts
+                // function sendSms(contactNumber) {
+                //     var params = {
+                //         'src': 'ALPHA-ID', // Sender's phone number with country code
+                //         'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
+                //         'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + req.body.startdate + ' To ' + req.body.enddate
+                //         + ' with ' + req.body.personal.doctorName + ' is cancelled Thankyou ' + ' RTWO ' , 
+                //         'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
+                //         'method': 'GET' // The method used to call the url
+                //     };
+                //     // Prints the complete responsez
+                //     p.send_message(params, function (status, response) {
+                //         console.log('Status: ', status);
+                //         console.log('API Response:\n', response);
+                //         console.log('Message UUID:\n', response['message.uuid']);
+                //         console.log('Api ID:\n', response['api.id']); 
+                //     });
+                // }
+                // sendSms(req.body.patient.contact);
+                 //Message ends
             }
 
         });

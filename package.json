@@ -32,6 +32,7 @@
     "express": "*",
     "express-session": "*",
     "forever": "*",
+    "fullcalendar": "^3.7.0",
     "glob": "*",
     "google-calendar": "*",
     "grunt": "*",

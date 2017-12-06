@@ -19,6 +19,7 @@
     "angular-filter": "*",
     "angular-messages": "*",
     "angular-multi-select": "*",
+    "angular-ui-calendar": "^1.0.2",
     "async": "*",
     "body-parser": "*",
     "bower": "*",

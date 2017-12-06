@@ -6,8 +6,8 @@
   "author": "Bhuvan",
   "license": "MIT",
   "engines": {
-    "node": "4.7.0",
-    "npm": "5.5.1"
+    "node": "4.5.0",
+    "npm": "2.15.9"
   },
   "scripts": {
     "start": "grunt",
@@ -20,14 +20,13 @@
     "angular-multi-select": "*",
     "async": "*",
     "body-parser": "*",
-    "bower": "^1.8.2",
+    "bower": "*",
     "chalk": "*",
     "compression": "*",
     "connect-flash": "*",
     "connect-mongo": "*",
     "consolidate": "*",
     "cookie-parser": "*",
-    "cors": "*",
     "express": "*",
     "express-session": "*",
     "forever": "*",
@@ -59,7 +58,6 @@
     "node-sass-middleware": "*",
     "nodemailer": "*",
     "npm": "*",
-    "oauth": "*",
     "passport": "*",
     "passport-facebook": "*",
     "passport-github": "*",
@@ -70,7 +68,6 @@
     "passport-twitter": "*",
     "phantomjs": "*",
     "plivo": "*",
-    "q": "*",
     "rebuild": "*",
     "serve-favicon": "*",
     "socket.io": "*",
@@ -78,7 +75,10 @@
     "twilio": "*",
     "underscore": "*",
     "validator": "*",
-    "xmlhttprequest": "*"
+    "xmlhttprequest": "*",
+    "q": "*",
+    "oauth": "*",
+    "cors": "*"
   },
   "devDependencies": {
     "grunt": "*",

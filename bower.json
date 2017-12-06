@@ -31,7 +31,7 @@
     "angular-filepicker": "*"
   },
   "resolutions": {
-    "angular": "*",
-    "fullcalendar": "*"
+    "angular": ">=1.6.2",
+    "fullcalendar": ">=3.0.0"
   }
 }

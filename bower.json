@@ -32,6 +32,6 @@
   },
   "resolutions": {
     "angular": ">=1.6.7",
-    "fullcalendar": ">=3.7.0"
+    "fullcalendar": ">=3.0.0"
   }
 }

@@ -6,7 +6,7 @@
   "author": "Bhuvan",
   "license": "MIT",
   "engines": {
-    "node": "4.5.0",
+    "node": "4.7.0",
     "npm": "2.15.9"
   },
   "scripts": {
@@ -17,7 +17,7 @@
   "dependencies": {
     "acl": "*",
     "angular-filter": "*",
-    "angular-messages": "^1.6.7",
+    "angular-messages": "*",
     "angular-multi-select": "*",
     "async": "*",
     "body-parser": "*",
@@ -32,7 +32,7 @@
     "express": "*",
     "express-session": "*",
     "forever": "*",
-    "fullcalendar": "^3.7.0",
+    "fullcalendar": "*",
     "glob": "*",
     "google-calendar": "*",
     "grunt": "*",

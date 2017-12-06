@@ -17,6 +17,7 @@
   "dependencies": {
     "acl": "*",
     "angular-filter": "*",
+    "angular-messages": "^1.6.7",
     "angular-multi-select": "*",
     "async": "*",
     "body-parser": "*",
@@ -27,6 +28,7 @@
     "connect-mongo": "*",
     "consolidate": "*",
     "cookie-parser": "*",
+    "cors": "*",
     "express": "*",
     "express-session": "*",
     "forever": "*",
@@ -58,6 +60,7 @@
     "node-sass-middleware": "*",
     "nodemailer": "*",
     "npm": "*",
+    "oauth": "*",
     "passport": "*",
     "passport-facebook": "*",
     "passport-github": "*",
@@ -68,6 +71,7 @@
     "passport-twitter": "*",
     "phantomjs": "*",
     "plivo": "*",
+    "q": "*",
     "rebuild": "*",
     "serve-favicon": "*",
     "socket.io": "*",
@@ -75,10 +79,7 @@
     "twilio": "*",
     "underscore": "*",
     "validator": "*",
-    "xmlhttprequest": "*",
-    "q": "*",
-    "oauth": "*",
-    "cors": "*"
+    "xmlhttprequest": "*"
   },
   "devDependencies": {
     "grunt": "*",

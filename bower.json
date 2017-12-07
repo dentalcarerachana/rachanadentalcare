@@ -18,7 +18,7 @@
     "jt.timepicker": "*",
     "angular-jquery-timepicker": "*",
     "angular-material": "*",
-    "angular-moment": "*",
+    "angular-moment": "^1.2.0",
     "moment": "*",
     "font-awesome": "*",
     "angular-input-stars-directive": "angular-input-stars#~1.5.5",

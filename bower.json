@@ -33,6 +33,6 @@
   "resolutions": {
     "angular": ">=1.6.2",
     "fullcalendar": ">=3.0.0",
-    "moment": "2.7.0"
+    "moment": ">=2.7.0"
   }
 }

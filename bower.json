@@ -19,7 +19,7 @@
     "angular-jquery-timepicker": "*",
     "angular-material": "*",
     "angular-moment": "^1.2.0",
-    "moment": "*",
+    "moment": "^2.19.3",
     "font-awesome": "*",
     "angular-input-stars-directive": "angular-input-stars#~1.5.5",
     "angularMultipleSelect": "angular-multiple-select#~1.1.1",

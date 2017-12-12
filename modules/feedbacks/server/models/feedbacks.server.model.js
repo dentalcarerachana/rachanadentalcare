@@ -72,10 +72,10 @@ var FeedbackSchema = new Schema({
         required: 'Please fill SuggestionImprovement',
     },
     feedbackRating: {
-        type: Number,
+        type: String,
         default: '',
         trim: true,
-        // required: 'Please fill SuggestionImprovement',
+        required: 'Please give rating',
     }
    
 });

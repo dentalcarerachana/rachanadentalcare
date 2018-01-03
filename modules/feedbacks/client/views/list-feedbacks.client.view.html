@@ -28,28 +28,21 @@
 
         <tbody>
 
-                <tr>
+                <!-- <tr>
                     <td></td>
                     <td>
-                            <!-- <label class="control-label">Name </label><br><br> -->
                             <br>
                             <input type="text" class"form-control" ng-model="feedback.feedbackPatName" placeholder="Enter Your Name" ng-required>
-                        <!-- <div class="patientcolor" ng-show="feedbackForm.$addFeedback || feedbackForm.feedbackPatName.$touched">
-                           <div ng-show="feedbackForm.feedbackPatName.$error.required"><b>Required</b></div>
-                         </div> -->
                     </td>
                     <td>
-                        <!-- <label>TreatmentDoctor </label><br><br> -->
                         <br>
                        <input type="text" class"form-control" ng-model="feedback.feedbackDoctorName" placeholder="Enter Treating DoctorName" required>
                     </td>
                     <td>
-                        <!-- <label>NatureOfTreatment </label><br><br> -->
                         <br>
                        <input type="text" class"form-control" ng-model="feedback.feedbackNatureTreatment" placeholder="Enter Nature Of Treating " required>
                     </td>
                         <td>
-                            <!-- <label>Ambience </label><br> -->
                             <md-input-container class="" >
                             <md-radio-group layout="column" id="feedbackAmbienceid" name="feedbackAmbience" ng-model="feedback.feedbackAmbience" ng-required>
                                 
@@ -62,7 +55,6 @@
                         </td>
 
                         <td>
-                            <!-- <label>experiencereception </label><br> -->
                             <md-input-container class="" >
                             <md-radio-group layout="column" id="feedbackExperienceid" name="feedbackExperience" ng-model="feedback.feedbackExperience" required>
                                 
@@ -75,7 +67,6 @@
                         </td>
 
                        <td>
-                           <!-- <label>Hyegine </label><br> -->
                            <md-input-container class="hyegine" >
                            <md-radio-group layout="column" id="feedbackHyegineid" name="feedbackHyegine" ng-model="feedback.feedbackHyegine" required>
                            <md-radio-button value="Excellent" class="text-muted"><b>Excellent</b></md-radio-button>
@@ -87,7 +78,6 @@
                        </td>
 
                         <td>
-                            <!-- <label>Patient </label><br> -->
                            <md-input-container class="" >
                            <md-radio-group layout="column" id="feedbackHandlingid" name="feedbackHandling" ng-model="feedback.feedbackHandling" required>   
                            <md-radio-button value="Excellent" class="text-muted"><b>Excellent</b></md-radio-button>
@@ -98,7 +88,6 @@
                           </md-input-container>
                        </td>
                         <td>
-                            <!-- <label>ChairSide </label><br> -->
                            <md-input-container class="" >
                            <md-radio-group layout="column" id="feedbackMannersid" name="feedbackManners" ng-model="feedback.feedbackManners" required>
                            <md-radio-button value="Excellent" class="text-muted"><b>Excellent</b></md-radio-button>
@@ -109,7 +98,6 @@
                           </md-input-container>
                        </td>
                         <td>
-                            <!-- <label>Communication </label><br> -->
                            <md-input-container class="" >
                            <md-radio-group layout="column" id="feedbackCommunicationid" name="feedbackCommunication" ng-model="feedback.feedbackCommunication" required>
                            <md-radio-button value="Excellent" class="text-muted"><b>Excellent</b></md-radio-button>
@@ -122,7 +110,6 @@
 
                          
                        <td>
-                           <!-- <label>explainproblem </label><br> -->
                         <md-input-container class="" >
                         <md-radio-group layout="column" id="feedbackExplainProblemPlanid" name="feedbackExplainProblemPlan" ng-model="feedback.feedbackExplainProblemPlan" required>
                         <md-radio-button value="Yes" class="text-muted"><b>Yes</b></md-radio-button>
@@ -132,7 +119,6 @@
                     </td>
 
                     <td>
-                        <!-- <label>Treatmentexplained </label><br> -->
                         <md-input-container class="" >
                         <md-radio-group layout="column" id="feedbackTreatmentExplainClearlyid" name="feedbackTreatmentExplainClearly" ng-model="feedback.feedbackTreatmentExplainClearly" required>
                         <md-radio-button value="Yes" class="text-muted"><b>Yes</b></md-radio-button>
@@ -142,7 +128,6 @@
                     </td>
 
                     <td>
-                        <!-- <label>satisfied </label><br> -->
                         <md-input-container class="" >
                         <md-radio-group layout="column" id="feedbackSatisfiedTreatmentid" name="feedbackSatisfiedTreatment" ng-model="feedback.feedbackSatisfiedTreatment" required>
                         <md-radio-button value="Yes" class="text-muted"><b>Yes</b></md-radio-button>
@@ -152,7 +137,6 @@
                     </td>
 
                     <td>
-                        <!-- <label>recommend </label><br> -->
                         <md-input-container class="" >
                         <md-radio-group layout="column" id="feedbackRecomendClinicid" name="feedbackRecomendClinic" ng-model="feedback.feedbackRecomendClinic" required>
                         <md-radio-button value="Yes" class="text-muted"><b>Yes</b></md-radio-button>
@@ -161,12 +145,10 @@
                        </md-input-container>
                     </td>
                     <td><br>
-                        <!-- <label>Suggestion </label><br><br> -->
                        <input type="text" class"form-control" ng-model="feedback.feedbackSuggestionImprovement" placeholder="Enter suggestion" required>
                     </td>
                     <td>
                         <div class="form-group">
-                            <!-- <label class="control-label" for="rating">Rating</label> -->
                             <div class="controls"><br>
                                 <input-stars max="5" ng-model="feedback.feedbackRating"></input-stars>
                             </div>
@@ -176,10 +158,10 @@
                     <td><br>
                        <button class="btn btn-primary" ng-click="addFeedback()" ng-disabled="disabled"><i class="glyphicon glyphicon-plus"></i>Add</button>
                     </td>
-                   </tr>
+                   </tr> -->
        
 
-            <tr ng-repeat="feedback in feedbackList | orderBy: 'feedbackPatName' | filter: searchText">
+            <tr ng-repeat="feedback in feedbackList | orderBy: '-created'">
                 <!-- <div class="col-sm-4">
                 <input type="text" class="form-control col-sm-2" placeholder="Search by patient name or contact..." ng-model="searchText">
                 </div> -->
@@ -199,6 +181,7 @@
                 <td>{{feedback.feedbackRecomendClinic}}</td>
                 <td>{{feedback.feedbackSuggestionImprovement}}</td>
                 <td>{{feedback.feedbackRating}}</td>
+                <!-- <td><input-stars max="5" ng-attr-readonly="{{ enableReadonly || false }}" ng-model="feedback.feedbackRating">{{feedback.feedbackRating}}</input-stars></td> -->
             </tr>
         </tbody>
     </table>

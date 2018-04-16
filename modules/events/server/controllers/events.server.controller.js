@@ -47,7 +47,6 @@ function authorize(refreshToken) {
             function (err, access_token, refresh_token, res) {
 
                 //lookup settings from database
-                // below username: needs to be updated with the clients email.com
                 User.findOne({ username: 'shimmeringsmilertwo' }, function (findError, settings) {
                     if (res !== undefined) {
                         var expiresIn = parseInt(res.expires_in);
@@ -81,7 +80,6 @@ function getAccessToken() {
     var accessToken;
 
 
-    // below username: needs to be updated with the clients email.com
     User.findOne({ username: 'shimmeringsmilertwo' }, function (findError, settings) {
         //check if access token is still valid
         var today = new Date();
@@ -415,11 +413,30 @@ exports.deleteEvent = function (req, res, next) {
                 });
             } else {
                 res.send(response);
+                //Message starts
+                // function sendSms(contactNumber) {
+                //     var params = {
+                //         'src': 'ALPHA-ID', // Sender's phone number with country code
+                //         'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
+                //         'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + req.body.startdate + ' To ' + req.body.enddate
+                //         + ' with ' + req.body.personal.doctorName + ' is cancelled Thankyou ' + ' RTWO ' , 
+                //         'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
+                //         'method': 'GET' // The method used to call the url
+                //     };
+                //     // Prints the complete responsez
+                //     p.send_message(params, function (status, response) {
+                //         console.log('Status: ', status);
+                //         console.log('API Response:\n', response);
+                //         console.log('Message UUID:\n', response['message.uuid']);
+                //         console.log('Api ID:\n', response['api.id']); 
+                //     });
+                // }
+                // sendSms(req.body.patient.contact);
+                 //Message ends
             }
 
         });
 
     });
 }
-
 

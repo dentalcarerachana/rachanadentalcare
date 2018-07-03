@@ -5,7 +5,7 @@ module.exports = {
   port: process.env.PORT || 8443,
   db: {
     //Hanamant DatabaseName replce with new Mlab path
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://shimmeringsmile:smile1234@ds147118.mlab.com:47118/shimmeringsmile',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://dentalcarerachana:dentalcarerachana123@ds125871.mlab.com:25871/dentalcarerachana',
     options: {
       user: '',
       pass: ''

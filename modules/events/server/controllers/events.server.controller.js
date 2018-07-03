@@ -364,7 +364,7 @@ exports.create = function (req, res, next) {
                             'src': 'ALPHA-ID', // Sender's phone number with country code
                             'dst': '+91' + contactNumber, //+919972095929', // Receiver's phone Number with country code
                             'text': 'Hello'  + '  ' + req.body.patient.patientName + ' your appointment on date ' + strtdate.toLocaleString('en-US') + ' To ' + enddte.toLocaleTimeString('en-US')
-                            + ' with ' + req.body.personal.doctorName + ' is confirmed. Thankyou' , 
+                            + ' with ' + req.body.personal.doctorName + ' is confirmed. Thank You' , 
                             'url': 'https://intense-brook-8241.herokuapp.com/report/', // The URL to which with the status of the message is sent
                             'method': 'GET' // The method used to call the url
                         };

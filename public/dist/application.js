@@ -663,6 +663,7 @@ angular.module('events').config(['$stateProvider',
 
 'use strict';
 
+
 var eventCreateApp = angular.module('events');
 
 eventCreateApp.controller('EventsCreateController',
@@ -680,8 +681,8 @@ eventCreateApp.controller('EventsCreateController',
             $scope.minDate = new Date();
 
             $scope.maxDate = new Date(
-                $scope.myDate.getFullYear(),
-                $scope.myDate.getMonth() + 2,
+               $scope.myDate.getFullYear(),
+             $scope.myDate.getMonth() + 2,
                 $scope.myDate.getDate()
             );
 
@@ -708,7 +709,7 @@ eventCreateApp.controller('EventsCreateController',
             };
 
             $scope.exists = function (item, list) {
-                return list.indexOf(item) > -1;
+             return list.indexOf(item) > -1;
             };
 
 
@@ -750,8 +751,7 @@ eventCreateApp.controller('EventsCreateController',
                     else if (hours.toString().length === 4) {
                         m = parseInt(hours.toString().substring(2, 4), 10);
                         hours = parseInt(hours.toString().substring(0, 2), 10);
-                    }
-                }
+                    }               }
 
                 $scope.event.startDate.setHours(hours);
                 $scope.event.startDate.setMinutes(m);
@@ -812,6 +812,8 @@ eventCreateApp.controller('EventsCreateController',
 
                 var _date = $filter('date')(new Date($scope.event.startDate), 'EEEE');
 
+                console.log(_date);
+
                 $('#timePick').timepicker('remove');
 
                 var startDate = new Date($scope.event.startDate);
@@ -830,9 +832,12 @@ eventCreateApp.controller('EventsCreateController',
                     $scope.event.maxTime = $filter('date')(new Date(slot.endtime), 'shortTime');
                     $scope.event.step = this.selectedTreatment.duration;
 
-                    slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })
+                  //  slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })//commented by nagaveni
 
                     if (slot.day === _date) {
+                        slotArr.push({ 'minTime': $scope.event.minTime, 'maxTime': $scope.event.maxTime })  //code by nagaveni
+                        
+                        
                         $googleCalendar.getEventByUser(this.selectedDentist, startDate, endDate)
                             .then(function (events) {
 
@@ -845,7 +850,8 @@ eventCreateApp.controller('EventsCreateController',
                                     eventArray.push(event);
                                 }, this);
 
-                                for (var i = 0; i < slotArr.length; i++) {
+                                for (var i = 0; i < slotArr.length; i++)
+                                 {
                                     $scope.notavailable = '';
                                     if (slotArr.length > 1) {
                                         var st = slotArr[0].maxTime;
@@ -887,6 +893,7 @@ eventCreateApp.controller('EventsCreateController',
 
                         $scope.notavailable = 'No Slots Available for the selected date'; //$scope.notavailable = '';
                     }
+                   // slotArr=null;//code by nagaveni
                 }
             };
 
@@ -1076,7 +1083,7 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                         'stick': 'true',
                     };
                 }
-                    console.log(event.summary);
+                    console.log("event_summary",event.summary);
                 }
 
             });

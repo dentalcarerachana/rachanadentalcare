@@ -123,7 +123,7 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                         'stick': 'true',
                     };
                 }
-                    console.log(event.summary);
+                    console.log("event_summary",event.summary);
                 }
 
             });

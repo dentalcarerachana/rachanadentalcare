@@ -1010,7 +1010,7 @@ eventsApp.controller('EventsController', ['$scope', '$googleCalendar', '$uibModa
                 resourceLabelText: 'Doctors',
 
                 resources: [
-                    { id: 'Dr. Supriya Potdar', title: 'Dr. Supriya Potdar', eventColor: 'green' },
+                    { id: 'Dr. Rachana R', title: 'Dr. Rachana R', eventColor: 'green' },
                 ],
 
                 eventRender: function (event, element) {
